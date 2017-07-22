@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Gem::Specification.new do |s|
   s.name = 'rubocop-nri'
   s.version = '1.0.0'
@@ -7,6 +9,7 @@ Gem::Specification.new do |s|
   s.authors = ['Hardy Jones']
   s.email = 'engineering@noredink.com'
   s.require_paths = ['lib']
+  s.files = Dir['lib/**/*']
   s.homepage = 'https://github.com/NoRedInk/cops'
   s.license = 'MIT'
 

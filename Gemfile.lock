@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    nri-cops (0.0.0)
+    rubocop-nri (1.0.0)
       rubocop (~> 0.49)
 
 GEM
@@ -31,8 +31,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-  nri-cops!
-  rake
+  rubocop-nri!
 
 BUNDLED WITH
    1.14.6
