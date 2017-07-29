@@ -4,9 +4,9 @@ module RuboCop
   module Cop
     module Nri
       ##
-      # Catches uses of Rollbar missing `advisory`, `impact` and `value`.
+      # Catches uses of Rollbar missing `advisory` and `impact` keywords.
       class MoreRollbarInformation < Cop
-        MSG = 'Must include advisory, impact, and value.'
+        MSG = 'Must include advisory and impact as keyword arguments.'
 
         def_node_matcher :missing_fields?, <<-PATTERN
           {(send (const nil :Rollbar) {:critical :error} ... (hash $...))}
@@ -20,10 +20,6 @@ module RuboCop
           (pair (sym :impact) _)
         PATTERN
 
-        def_node_matcher :value?, <<-PATTERN
-          (pair (sym :value) _)
-        PATTERN
-
         def on_send(node)
           missing_fields?(node) do |pairs|
             add_offense(node, :expression) unless all_fields?(pairs)
@@ -34,8 +30,7 @@ module RuboCop
 
         def all_fields?(pairs)
           pairs.any? { |pair| advisory?(pair) } &&
-            pairs.any? { |pair| impact?(pair) } &&
-            pairs.any? { |pair| value?(pair) }
+            pairs.any? { |pair| impact?(pair) }
         end
       end
     end
