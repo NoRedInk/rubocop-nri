@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = 'rubocop-nri'
-  s.version = '1.0.0'
+  s.version = '2.0.0'
   s.date = '2017-07-20'
   s.summary = 'Cops we use internally at NoRedInk'
   s.description = 'Cops we use internally at NoRedInk'
