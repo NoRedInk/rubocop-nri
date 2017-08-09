@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rubocop-nri (1.0.0)
+    rubocop-nri (2.0.0)
       rubocop (~> 0.49)
 
 GEM
@@ -10,7 +10,7 @@ GEM
     ast (2.3.0)
     byebug (9.0.6)
     diff-lcs (1.3)
-    parallel (1.11.2)
+    parallel (1.12.0)
     parser (2.4.0.0)
       ast (~> 2.2)
     powerpack (0.1.1)

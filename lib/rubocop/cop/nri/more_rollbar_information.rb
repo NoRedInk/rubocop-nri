@@ -9,10 +9,13 @@ module RuboCop
         MSG = 'Must include advisory and impact as keyword arguments.'
 
         def_node_matcher :missing_hash?, <<-PATTERN
-          (send (const nil :Rollbar) {:critical :error} ...)
+          {
+            (send (const nil :Rollbar) {:critical :error})
+            (send (const nil :Rollbar) {:critical :error} ... !(hash ...))
+          }
         PATTERN
 
-        def_node_matcher :missing_fields?, <<-PATTERN
+        def_node_matcher :has_hash?, <<-PATTERN
           (send (const nil :Rollbar) {:critical :error} ... (hash $...))
         PATTERN
 
@@ -27,7 +30,7 @@ module RuboCop
         def on_send(node)
           add_offense(node, :expression) if missing_hash?(node)
 
-          missing_fields?(node) do |pairs|
+          has_hash?(node) do |pairs|
             add_offense(node, :expression) unless all_fields?(pairs)
           end
         end

@@ -89,6 +89,14 @@ RSpec.describe RuboCop::Cop::Nri::MoreRollbarInformation do
 
       expect(cop.offenses.size).to eq 1 
     end
+
+    it 'does not fail if both :advisory and :impact are included' do
+      source = 'Rollbar.error(advisory: true, impact: true)'
+
+      inspect_source(cop, source)
+
+      expect(cop.offenses).to be_empty
+    end
   end
 
   context 'critical' do
@@ -122,6 +130,14 @@ RSpec.describe RuboCop::Cop::Nri::MoreRollbarInformation do
       inspect_source(cop, source)
 
       expect(cop.offenses.size).to eq 1
+    end
+
+    it 'does not fail if both :advisory and :impact are included' do
+      source = 'Rollbar.critical(advisory: true, impact: true)'
+
+      inspect_source(cop, source)
+
+      expect(cop.offenses).to be_empty
     end
   end
 end
