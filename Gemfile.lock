@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rubocop-nri (2.0.0)
+    rubocop-nri (2.0.1)
       rubocop (~> 0.49)
 
 GEM
