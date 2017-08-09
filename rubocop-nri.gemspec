@@ -4,8 +4,8 @@ Gem::Specification.new do |s|
   s.name = 'rubocop-nri'
   s.version = '1.0.0'
   s.date = '2017-07-20'
-  s.summary = 'Cops we use'
-  s.description = 'Cops we use'
+  s.summary = 'Cops we use internally at NoRedInk'
+  s.description = 'Cops we use internally at NoRedInk'
   s.authors = ['Hardy Jones']
   s.email = 'engineering@noredink.com'
   s.require_paths = ['lib']
@@ -15,5 +15,6 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'rubocop', '~> 0.49'
 
-  s.add_development_dependency 'byebug'
+  s.add_development_dependency 'byebug', '~> 9.0'
+  s.add_development_dependency 'rspec', '~> 3.6'
 end

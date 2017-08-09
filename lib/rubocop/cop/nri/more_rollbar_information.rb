@@ -8,8 +8,12 @@ module RuboCop
       class MoreRollbarInformation < Cop
         MSG = 'Must include advisory and impact as keyword arguments.'
 
+        def_node_matcher :missing_hash?, <<-PATTERN
+          (send (const nil :Rollbar) {:critical :error} ...)
+        PATTERN
+
         def_node_matcher :missing_fields?, <<-PATTERN
-          {(send (const nil :Rollbar) {:critical :error} ... (hash $...))}
+          (send (const nil :Rollbar) {:critical :error} ... (hash $...))
         PATTERN
 
         def_node_matcher :advisory?, <<-PATTERN
@@ -21,6 +25,8 @@ module RuboCop
         PATTERN
 
         def on_send(node)
+          add_offense(node, :expression) if missing_hash?(node)
+
           missing_fields?(node) do |pairs|
             add_offense(node, :expression) unless all_fields?(pairs)
           end
