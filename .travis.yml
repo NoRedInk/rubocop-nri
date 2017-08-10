@@ -7,5 +7,6 @@ rvm:
   - 2.3
 
 script:
+  - bundle exec reek
   - bundle exec rubocop
   - bundle exec rspec
