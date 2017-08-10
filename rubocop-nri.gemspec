@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email = 'engineering@noredink.com'
   s.require_paths = ['lib']
   s.files = Dir['lib/**/*']
-  s.homepage = 'https://github.com/NoRedInk/cops'
+  s.homepage = 'https://github.com/NoRedInk/rubocop-nri'
   s.license = 'MIT'
 
   s.add_runtime_dependency 'rubocop', '~> 0.49'
