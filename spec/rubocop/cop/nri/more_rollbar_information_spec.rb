@@ -1,4 +1,4 @@
-require 'spec_helper'
+# frozen_string_literal: true
 
 RSpec.describe RuboCop::Cop::Nri::MoreRollbarInformation do
   let(:cop) { described_class.new }
@@ -32,9 +32,9 @@ RSpec.describe RuboCop::Cop::Nri::MoreRollbarInformation do
 
     it 'does not check for :advisory or :impact' do
       source = 'Rollbar.info(foo: true)'
-      
+
       inspect_source(cop, source)
-      
+
       expect(cop.offenses).to be_empty
     end
   end
@@ -71,7 +71,7 @@ RSpec.describe RuboCop::Cop::Nri::MoreRollbarInformation do
 
       inspect_source(cop, source)
 
-      expect(cop.offenses.size).to eq 1 
+      expect(cop.offenses.size).to eq 1
     end
 
     it 'checks for :impact' do
@@ -79,7 +79,7 @@ RSpec.describe RuboCop::Cop::Nri::MoreRollbarInformation do
 
       inspect_source(cop, source)
 
-      expect(cop.offenses.size).to eq 1 
+      expect(cop.offenses.size).to eq 1
     end
 
     it 'checks for both :advisory and :impact' do
@@ -87,7 +87,7 @@ RSpec.describe RuboCop::Cop::Nri::MoreRollbarInformation do
 
       inspect_source(cop, source)
 
-      expect(cop.offenses.size).to eq 1 
+      expect(cop.offenses.size).to eq 1
     end
 
     it 'does not fail if both :advisory and :impact are included' do
@@ -113,7 +113,7 @@ RSpec.describe RuboCop::Cop::Nri::MoreRollbarInformation do
 
       inspect_source(cop, source)
 
-      expect(cop.offenses.size).to eq 1 
+      expect(cop.offenses.size).to eq 1
     end
 
     it 'checks for :impact' do
@@ -121,7 +121,7 @@ RSpec.describe RuboCop::Cop::Nri::MoreRollbarInformation do
 
       inspect_source(cop, source)
 
-      expect(cop.offenses.size).to eq 1 
+      expect(cop.offenses.size).to eq 1
     end
 
     it 'checks for both :advisory and :impact' do

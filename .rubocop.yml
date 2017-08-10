@@ -1,0 +1,10 @@
+require:
+  - rubocop-rspec
+
+Metrics/BlockLength:
+  ExcludedMethods:
+    - describe
+
+Style/FileName:
+  Exclude:
+    - 'lib/rubocop-nri.rb'

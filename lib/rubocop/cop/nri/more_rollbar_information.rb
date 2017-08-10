@@ -15,7 +15,7 @@ module RuboCop
           }
         PATTERN
 
-        def_node_matcher :has_hash?, <<-PATTERN
+        def_node_matcher :hash, <<-PATTERN
           (send (const nil :Rollbar) {:critical :error} ... (hash $...))
         PATTERN
 
@@ -28,18 +28,32 @@ module RuboCop
         PATTERN
 
         def on_send(node)
-          add_offense(node, :expression) if missing_hash?(node)
-
-          has_hash?(node) do |pairs|
-            add_offense(node, :expression) unless all_fields?(pairs)
-          end
+          on_missing_hash(node)
+          on_hash(node)
         end
 
         private
 
-        def all_fields?(pairs)
-          pairs.any? { |pair| advisory?(pair) } &&
-            pairs.any? { |pair| impact?(pair) }
+        def advisory_key?(pairs)
+          pairs.any?(&method(:advisory?))
+        end
+
+        def all_keys?(pairs)
+          advisory_key?(pairs) && impact_key?(pairs)
+        end
+
+        def impact_key?(pairs)
+          pairs.any?(&method(:impact?))
+        end
+
+        def on_hash(node)
+          hash(node) do |pairs|
+            add_offense(node, :expression) unless all_keys?(pairs)
+          end
+        end
+
+        def on_missing_hash(node)
+          add_offense(node, :expression) if missing_hash?(node)
         end
       end
     end

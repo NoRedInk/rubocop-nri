@@ -6,4 +6,6 @@ notifications:
 rvm:
   - 2.3
 
-script: bundle exec rspec
+script:
+  - bundle exec rubocop
+  - bundle exec rspec
