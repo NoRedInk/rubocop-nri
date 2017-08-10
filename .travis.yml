@@ -15,7 +15,7 @@ rvm:
 
 script:
   - shellcheck script/**
-  - bundle exec reek
+  - bundle exec reek lib spec
   - bundle exec rubocop
   - bundle exec rspec
   - script/mutant.sh
