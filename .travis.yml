@@ -11,6 +11,9 @@ notifications:
 rvm:
   - 2.3
 
+before_script:
+  - gem install bundler -v 1.17.2
+
 script:
   - shellcheck script/**
   - bundle exec reek lib spec
