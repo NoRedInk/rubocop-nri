@@ -3,7 +3,7 @@
 RSpec.describe RuboCop::Cop::Nri::MoreRollbarInformation do
   let(:cop) { described_class.new }
 
-  context 'debug' do
+  context 'when debug' do
     it 'does not check for any hash being sent' do
       source = 'Rollbar.debug'
 
@@ -21,7 +21,7 @@ RSpec.describe RuboCop::Cop::Nri::MoreRollbarInformation do
     end
   end
 
-  context 'info' do
+  context 'when info' do
     it 'does not check for any hash being sent' do
       source = 'Rollbar.info'
 
@@ -39,7 +39,7 @@ RSpec.describe RuboCop::Cop::Nri::MoreRollbarInformation do
     end
   end
 
-  context 'warning' do
+  context 'when warning' do
     it 'does not check for any hash being sent' do
       source = 'Rollbar.warning'
 
@@ -57,7 +57,7 @@ RSpec.describe RuboCop::Cop::Nri::MoreRollbarInformation do
     end
   end
 
-  context 'error' do
+  context 'when error' do
     it 'checks for a hash being sent' do
       source = 'Rollbar.error'
 
@@ -99,7 +99,7 @@ RSpec.describe RuboCop::Cop::Nri::MoreRollbarInformation do
     end
   end
 
-  context 'critical' do
+  context 'when critical' do
     it 'checks for a hash being sent' do
       source = 'Rollbar.critical'
 

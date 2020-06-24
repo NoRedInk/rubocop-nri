@@ -1,7 +1,5 @@
 addons:
   apt:
-    sources:
-      - debian-sid
     packages:
       - shellcheck
 
@@ -11,7 +9,10 @@ notifications:
   email: false
 
 rvm:
-  - 2.3
+  - 2.6
+
+before_script:
+  - gem install bundler -v 1.17.2
 
 script:
   - shellcheck script/**
